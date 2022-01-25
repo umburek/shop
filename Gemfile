@@ -6,6 +6,19 @@ ruby "3.0.1"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.1"
 
+gem "rspec-rails"
+gem 'rubocop', require: false
+gem 'sass-rails', '>= 6'
+gem 'webpacker', '~> 5.0'
+gem 'turbolinks', '~> 5'
+gem 'jbuilder', '~> 2.7'
+gem 'cocoon'
+gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+gem 'pry-rails'
+gem "ransack", "~> 2.4"
+gem "pundit"
+
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
@@ -23,9 +36,6 @@ gem "turbo-rails"
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
-
-# Build JSON APIs with ease [https://github.com/rails/jbuilder]
-gem "jbuilder"
 
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4.0"
