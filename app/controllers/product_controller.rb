@@ -1,5 +1,9 @@
 class ProductController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy ]
+  def index
+    @products = Product.all
+  end
+
   def new
     @product = Product.new
   end
@@ -15,6 +19,6 @@ class ProductController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit( :name, :uid)
+    params.require(:product).permit(:name)
   end
 end
