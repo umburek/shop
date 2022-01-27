@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_27_093429) do
+ActiveRecord::Schema.define(version: 2022_01_27_094610) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 2022_01_27_093429) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_categories_on_name"
+  end
+
+  create_table "category_product", force: :cascade do |t|
+    t.bigint "category_id"
+    t.bigint "product_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_category_product_on_category_id"
+    t.index ["product_id"], name: "index_category_product_on_product_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -50,4 +59,6 @@ ActiveRecord::Schema.define(version: 2022_01_27_093429) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "category_product", "categories"
+  add_foreign_key "category_product", "products"
 end
