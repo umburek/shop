@@ -1,0 +1,48 @@
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field form-group">
+    <% f.label :email %><br/>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-conrol", placeholder: "Email" %>
+  </div>
+
+  <div class="field form-group">
+    <% f.label :password %>
+    <br>
+    <%= f.password_field :password, autocomplete: "new-password", class: "form-conrol", placeholder: "Password (#@minimum_password_length characters minimum)" %>
+  </div>
+
+  <div class="field form-group">
+    <% f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-conrol", placeholder: "Password Confirmation" %>
+  </div>
+
+  <div class="field form-group">
+    <% f.label :nick %> <br />
+    <%= f.text_field :nick, autocomplete: "nick", class: "form-conrol", placeholder: "Nick" %>
+  </div>
+
+  <div class="field form-group">
+    <% f.label :name %> <br />
+    <%= f.text_field :name, autocomplete: "name", class: "form-conrol", placeholder: "Name" %>
+  </div>
+
+  <div class="field form-group">
+    <% f.label :surname %> <br />
+    <%= f.text_field :surname, autocomplete: "surname", class: "form-conrol", placeholder: "Surname" %>
+  </div>
+
+  <div class="field form-group">
+    <% f.label :phone %> <br />
+    <%= f.number_field :phone, autocomplete: "phone", class: "form-conrol", placeholder: "Phone number" %>
+  </div>
+
+  <br>
+  <div class="actions">
+    <%= f.submit "Sign up", class: "btn btn-secondary" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

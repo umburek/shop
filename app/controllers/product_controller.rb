@@ -10,6 +10,16 @@ class ProductController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    @product.save
+  end
+
+  def update
+    @product.update(product_params)
+  end
+
+  def destroy
+    @product = Product.find(params[:id])
+    @product.destroy
   end
 
   private

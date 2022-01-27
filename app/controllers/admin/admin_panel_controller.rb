@@ -6,7 +6,7 @@ module Admin
     end
 
     def create
-      @product = Product.new(params[:id])
+      @product = Product.new
       redirect_to admin_admin_panel_path, notice: "Product Added"
     end
 
