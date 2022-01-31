@@ -1,12 +1,5 @@
 <h1>Admin panel</h1>
 <br>
-
-<% @categories.each do |category| %>
-  <h2> <%= category.name %> </h2>
-
-  <%= link_to 'Add', admin_admin_panel_path(id: category.id), method: :post %>
-  <br>
-  <%= link_to 'Delete', category_path(id: category.id), method: :delete %>
-  <br>
-  <br>
-<% end %>
+<div class="actions">
+  <%= link_to 'Create User', admin_users_path, method: :post  %>
+</div>
