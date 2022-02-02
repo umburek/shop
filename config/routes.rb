@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'admin_panel#index'
     resources :admin_panel, only: [:index]
-    resources :products, only: [:create, :update]
     resources :users, only: [:index, :create, :update, :destroy]
+    resources :categories, only: [:index, :create, :update, :destroy]
   end
 
   root to: 'home#index'
