@@ -1,0 +1,34 @@
+<h2>Products</h2>
+
+<%= form_for @product, as: :product, url: admin_products_path do |f| %>
+
+  <div class="field form-group">
+    <%= f.text_field :name, class: "form-control", placeholder: "Name" %>
+    <%= f.text_area :description, size: "70x5", class: "form-control", placeholder: "Description" %>
+    <%= f.number_field :on_stock, class: "form-control" %>
+    <%#= f.collection_select @categories, :name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Create Product", class: 'btn btn-secondary' %>
+  </div>
+<% end %>
+
+<br>
+<% @products.each do |product| %>
+  <strong>Name:</strong>
+  <%= product.name %>
+  <br>
+  <strong>Description:</strong>
+  <%= product.description %>
+  <br>
+  <strong>on Stock:</strong>
+  <%= product.on_stock %>
+  <br>
+  <strong>Category:</strong>
+  <% product.category_products.each do |category_product| %>
+    <%= category_product.category.name %>
+  <% end %>
+  <br>
+  <br>
+<% end %>
