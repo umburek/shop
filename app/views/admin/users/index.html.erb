@@ -1,20 +1,14 @@
-<h2>Register new User</h2>
-
-<%= form_for(@user, admin_users_path) do |f| %>
-
-
-  <div class="field form-group">
-    <% f.label :email %><br/>
-    <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email" %>
-  </div>
-
-  <div class="field form-group">
-    <% f.label :encrypted_password %><br/>
-    <%= f.text_field :encrypted_password, class: "form-control", placeholder: "Password" %>
-  </div>
-
+<h1>Users</h1>
+<br>
+<div class="actions">
+  <%= link_to 'Invite User', new_user_invitation_path  %>
+</div>
+<%  @users.each do |user|%>
+  <strong>email:</strong>
+  <%= user.email %>
+  <strong>| Invitation accepted?</strong>
+  <%= user.invitation_accepted? %>
+  <strong>| Role:</strong>
+  <%= user.role %>
   <br>
-  <div class="actions">
-    <%= f.submit "Create User", class: 'btn btn-secondary'  %>
-  </div>
 <% end %>
