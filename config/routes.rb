@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :admin_panel, only: [:index]
     resources :users, only: [:index, :create, :update, :destroy]
     resources :categories, only: [:index, :create, :update, :destroy]
-    resources :products, only: [:index, :create, :update, :destroy]
+    resources :products, only: [:index, :create, :edit, :update, :destroy]
   end
 
   root to: 'home#index'

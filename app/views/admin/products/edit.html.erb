@@ -1,0 +1,24 @@
+<h2>Editing Product</h2>
+
+<%= form_for @product, as: :product, url: admin_products_path do |f| %>
+
+  <div class="field form-group">
+    <%= f.text_field :name, class: "form-control", placeholder: "Name" %>
+    <%= f.text_area :description, size: "70x5", class: "form-control", placeholder: "Description" %>
+    <%= f.number_field :on_stock, class: "form-control" %>
+    <%= f.file_field :photo, class: "form-control" %>
+    <%= f.select :category_ids, Category.all.order(:name).map { |i| ["#{i.name}", i.id] } %>
+  </div>
+  <br>
+
+  <%= f.fields_for :category_products do |category_subform| %>
+    <%= category_subform.select :category_id, Category.all.order(:name).map { |i| ["#{i.name}", i.id] } %>
+    <%= category_subform.collection_select(:category, :id, Category.all, :id, :name) %>
+  <% end %>
+
+  <%#= collection_select(:category, :id, Category.all, :id, :name) %>
+
+  <div class="actions">
+    <%= link_to 'Update', admin_product_path(@product), method: :patch, class: 'btn btn-secondary' %>
+  </div>
+<% end %>
