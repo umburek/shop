@@ -18,6 +18,7 @@ gem 'pry-rails'
 gem "ransack", "~> 2.4"
 gem "pundit"
 gem 'simple_form'
+gem 'archivable'
 
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]

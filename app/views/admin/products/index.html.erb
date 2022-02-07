@@ -26,8 +26,15 @@
   <strong>Categories:</strong>
   <%= product.categories.pluck(:name).join(', ') %>
   <br>
+  <% if product.archived? %>
+    <strong>Archived at:</strong>
+    <%= product.updated_at %>
+    <br>
+  <% end %>
+  <br>
   <%= link_to 'Edit', edit_admin_product_path(product), class: "btn btn-secondary" %>
   <%= link_to 'Delete', admin_product_path(product), class: "btn btn-danger", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+
   <br>
   <br>
 <% end %>

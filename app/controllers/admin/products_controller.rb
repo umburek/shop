@@ -47,6 +47,7 @@ module Admin
         :description,
         :on_stock,
         :photo,
+        :archived,
         category_ids: []
       )
     end

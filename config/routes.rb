@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :categories
-  resources :products
+  resources :categories, only: [:index]
+  resources :products, only: [:index]
 
   namespace :admin do
     root 'admin_panel#index'
-    resources :admin_panel, only: [:index]
-    resources :users, only: [:index, :create, :update, :destroy]
+    resources :admin_panel
+    resources :users
     resources :categories
     resources :products
   end
