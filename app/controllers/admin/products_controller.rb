@@ -1,5 +1,4 @@
 module Admin
-
   class ProductsController < BaseController
     before_action :set_product, only: %i[ show edit update destroy ]
 
@@ -9,6 +8,7 @@ module Admin
     end
 
     def show
+
     end
 
     def edit
@@ -48,7 +48,7 @@ module Admin
         :description,
         :on_stock,
         :photo,
-        category_products_attributes: [:id, :category_id]
+        category_ids: []
       )
     end
   end
