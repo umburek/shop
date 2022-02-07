@@ -17,6 +17,7 @@ gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 gem 'pry-rails'
 gem "ransack", "~> 2.4"
 gem "pundit"
+gem 'simple_form'
 
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
