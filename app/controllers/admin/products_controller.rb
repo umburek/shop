@@ -3,12 +3,11 @@ module Admin
     before_action :set_product, only: %i[ show edit update destroy ]
 
     def index
-      @products = Product.all
+      @products = Product.all.order(name: :asc)
       @product = Product.new
     end
 
     def show
-
     end
 
     def edit

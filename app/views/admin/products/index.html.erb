@@ -4,12 +4,11 @@
 
   <%= render partial: 'form_fields', locals: { f: f } %>
 
-  <div class="actions">
-    <%= f.submit "Create Product", class: 'btn btn-secondary' %>
-  </div>
+  <%= f.submit "Create Product", class: 'btn btn-secondary' %>
+  <%= link_to 'Back', admin_admin_panel_index_path, class: "btn btn-secondary" %>
 <% end %>
-
 <br>
+
 <% @products.each do |product| %>
   <% if product.photo.attached? %>
     <%= image_tag product.photo, width: "200px" %>
@@ -28,7 +27,7 @@
   <%= product.categories.pluck(:name).join(', ') %>
   <br>
   <%= link_to 'Edit', edit_admin_product_path(product), class: "btn btn-secondary" %>
-  <%= link_to 'Delete', admin_product_path(product), class: "btn btn-danger", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }%>
+  <%= link_to 'Delete', admin_product_path(product), class: "btn btn-danger", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
   <br>
   <br>
 <% end %>

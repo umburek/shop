@@ -1,15 +1,12 @@
 <h2>Categories</h2>
 
-<%= form_for @category, as: :category, url: admin_categories_path do |f| %>
+<%= simple_form_for @category, as: :category, url: admin_categories_path do |f| %>
 
-  <div class="field form-group">
-    <%= f.text_field :name, class: "form-control", placeholder: "Name" %>
-    <%= f.text_area :description, size: "70x5", class: "form-control", placeholder: "Description" %>
-  </div>
+<%= render partial: 'form_fields', locals: { f: f } %>
+  <br>
 
-  <div class="actions">
-    <%= f.submit "Create Category", class: 'btn btn-secondary' %>
-  </div>
+  <%= f.button :submit, class: "btn btn-secondary" %>
+  <%= link_to 'Back', admin_admin_panel_index_path, class: "btn btn-secondary" %>
 <% end %>
 
 <br>
@@ -19,6 +16,9 @@
   <br>
   <strong>Description:</strong>
   <%= category.description %>
+  <br>
+  <%= link_to 'Edit', edit_admin_category_path(category), class: "btn btn-secondary" %>
+  <%= link_to 'Delete', admin_category_path(category), class: "btn btn-danger", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }%>
   <br>
   <br>
 <% end %>
