@@ -1,10 +1,11 @@
 module Admin
-
   class CategoriesController < BaseController
     before_action :set_category, only: %i[ show edit update destroy ]
 
     def index
-      @categories = Category.all.order(name: :asc)
+      @q = Category.all.order(name: :asc).ransack(params[:q])
+      @categories_searched = @q.result(distinct: true).paginate(page: params[:page], per_page: 10)
+      @categories = Category.all.order(name: :asc).paginate(page: params[:page], per_page: 10)
       @category = Category.new
     end
 

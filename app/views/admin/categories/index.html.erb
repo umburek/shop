@@ -8,9 +8,10 @@
   <%= f.button :submit, class: "btn btn-secondary" %>
   <%= link_to 'Back', admin_admin_panel_index_path, class: "btn btn-secondary" %>
 <% end %>
-
 <br>
-<% @categories.each do |category| %>
+<%= render 'admin/categories/search_form' %>
+<br>
+<% @categories_searched.each do |category| %>
   <strong>Name:</strong>
   <%= category.name %>
   <br>
@@ -21,4 +22,20 @@
   <%= link_to 'Delete', admin_category_path(category), class: "btn btn-danger", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }%>
   <br>
   <br>
+<% end %>
+
+<% if @categories_searched.nil? %>
+  <div class="digg_pagination">
+    <div class="page_info">
+      <%= page_entries_info @categories %>
+    </div>
+    <%= will_paginate @categories, :container => false %>
+  </div>
+<% else %>
+  <div class="digg_pagination">
+    <div class="page_info">
+      <%= page_entries_info @categories_searched %>
+    </div>
+    <%= will_paginate @categories_searched, :container => false %>
+  </div>
 <% end %>

@@ -1,0 +1,8 @@
+<%= search_form_for @q, url: admin_categories_path do |f| %>
+  <%= f.label "Name contains:" %>
+  <br>
+  <%= f.search_field :name_cont %>
+  <%= f.submit "Search", class:"btn btn-primary" %>
+<% end %>
+<%= link_to "Clear Search", admin_categories_path, class:"cancel-button" %>
+<br>
