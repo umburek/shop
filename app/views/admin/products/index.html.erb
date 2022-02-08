@@ -8,8 +8,9 @@
   <%= link_to 'Back', admin_admin_panel_index_path, class: "btn btn-secondary" %>
 <% end %>
 <br>
+<%= render 'admin/products/search_form' %>
 
-<% @products.each do |product| %>
+<% @products_searched.each do |product| %>
   <% if product.photo.attached? %>
     <%= image_tag product.photo, width: "200px" %>
   <% end %>
@@ -34,7 +35,22 @@
   <br>
   <%= link_to 'Edit', edit_admin_product_path(product), class: "btn btn-secondary" %>
   <%= link_to 'Delete', admin_product_path(product), class: "btn btn-danger", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+  <br>
+  <br>
+<% end %>
 
-  <br>
-  <br>
+<% if @products_searched.nil? %>
+<div class="digg_pagination">
+  <div class="page_info">
+    <%= page_entries_info @products %>
+  </div>
+  <%= will_paginate @products, :container => false %>
+</div>
+<% else %>
+  <div class="digg_pagination">
+    <div class="page_info">
+      <%= page_entries_info @products_searched %>
+    </div>
+    <%= will_paginate @products_searched, :container => false %>
+  </div>
 <% end %>
