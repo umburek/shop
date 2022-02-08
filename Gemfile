@@ -18,6 +18,9 @@ gem 'pry-rails'
 gem "ransack", "~> 2.4"
 gem "pundit"
 gem 'simple_form'
+gem 'simple_search_filter'
+gem 'will_paginate', '~> 3.3'
+gem 'will_paginate-bootstrap'
 gem 'archivable'
 
 
