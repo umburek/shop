@@ -46,6 +46,7 @@ module Admin
         :categories,
         :name,
         :description,
+        :price,
         :on_stock,
         :photo,
         :archived,

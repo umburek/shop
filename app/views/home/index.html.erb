@@ -20,6 +20,10 @@
   <strong>Categories:</strong>
   <%= product.categories.pluck(:name).join(', ') %>
   <br>
+  <% if @current_user.present? %>
+    <%= link_to "BUY for #{product.price}$", admin_product_path(product), class: "btn btn-secondary" %>
+    <br>
+  <% end %>
   <br>
 <% end %>
 

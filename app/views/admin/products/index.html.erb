@@ -13,13 +13,20 @@
 <% @products_searched.each do |product| %>
   <% if product.photo.attached? %>
     <%= image_tag product.photo, width: "200px" %>
+    <br>
+  <% else %>
+    <strong>[Photo not available]</strong>
+    <br>
   <% end %>
-  <br>
   <strong>Name:</strong>
   <%= product.name %>
   <br>
   <strong>Description:</strong>
   <%= product.description %>
+  <br>
+  <strong>Price:</strong>
+  <%= product.price %>
+  <strong>$</strong>
   <br>
   <strong>on Stock:</strong>
   <%= product.on_stock %>
@@ -32,7 +39,6 @@
     <%= product.updated_at %>
     <br>
   <% end %>
-  <br>
   <%= link_to 'Edit', edit_admin_product_path(product), class: "btn btn-secondary" %>
   <%= link_to 'Delete', admin_product_path(product), class: "btn btn-danger", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
   <br>
