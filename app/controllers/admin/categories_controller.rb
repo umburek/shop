@@ -5,7 +5,6 @@ module Admin
     def index
       @q = Category.all.order(name: :asc).ransack(params[:q])
       @categories_searched = @q.result(distinct: true).paginate(page: params[:page], per_page: 10)
-      @categories = Category.all.order(name: :asc).paginate(page: params[:page], per_page: 10)
       @category = Category.new
     end
 

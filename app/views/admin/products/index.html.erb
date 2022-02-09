@@ -39,18 +39,9 @@
   <br>
 <% end %>
 
-<% if @products_searched.nil? %>
 <div class="digg_pagination">
   <div class="page_info">
-    <%= page_entries_info @products %>
+    <%= page_entries_info @products_searched %>
   </div>
-  <%= will_paginate @products, :container => false %>
+  <%= will_paginate @products_searched, :container => false %>
 </div>
-<% else %>
-  <div class="digg_pagination">
-    <div class="page_info">
-      <%= page_entries_info @products_searched %>
-    </div>
-    <%= will_paginate @products_searched, :container => false %>
-  </div>
-<% end %>

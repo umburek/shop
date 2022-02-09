@@ -2,7 +2,7 @@
 
 <%= simple_form_for @category, as: :category, url: admin_categories_path do |f| %>
 
-<%= render partial: 'form_fields', locals: { f: f } %>
+  <%= render partial: 'form_fields', locals: { f: f } %>
   <br>
 
   <%= f.button :submit, class: "btn btn-secondary" %>
@@ -19,23 +19,14 @@
   <%= category.description %>
   <br>
   <%= link_to 'Edit', edit_admin_category_path(category), class: "btn btn-secondary" %>
-  <%= link_to 'Delete', admin_category_path(category), class: "btn btn-danger", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }%>
+  <%= link_to 'Delete', admin_category_path(category), class: "btn btn-danger", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
   <br>
   <br>
 <% end %>
 
-<% if @categories_searched.nil? %>
-  <div class="digg_pagination">
-    <div class="page_info">
-      <%= page_entries_info @categories %>
-    </div>
-    <%= will_paginate @categories, :container => false %>
+<div class="digg_pagination">
+  <div class="page_info">
+    <%= page_entries_info @categories_searched %>
   </div>
-<% else %>
-  <div class="digg_pagination">
-    <div class="page_info">
-      <%= page_entries_info @categories_searched %>
-    </div>
-    <%= will_paginate @categories_searched, :container => false %>
-  </div>
-<% end %>
+  <%= will_paginate @categories_searched, :container => false %>
+</div>

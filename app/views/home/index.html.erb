@@ -1,3 +1,31 @@
-<% name = current_user.present? ? current_user.email : 'Stranger' %>
+<%= render 'home/search_form' %>
+<br>
+<% @products_searched.each do |product| %>
+  <% if product.photo.attached? %>
+    <%= image_tag product.photo, width: "200px" %>
+    <br>
+  <% else %>
+    <strong>[Photo not available]</strong>
+    <br>
+  <% end %>
+  <strong>Name:</strong>
+  <%= product.name %>
+  <br>
+  <strong>Description:</strong>
+  <%= product.description %>
+  <br>
+  <strong>on Stock:</strong>
+  <%= product.on_stock %>
+  <br>
+  <strong>Categories:</strong>
+  <%= product.categories.pluck(:name).join(', ') %>
+  <br>
+  <br>
+<% end %>
 
-<h1>Welcome, <%= name %> </h1>
+<div class="digg_pagination">
+  <div class="page_info">
+    <%= page_entries_info @products_searched %>
+  </div>
+  <%= will_paginate @products_searched, :container => false %>
+</div>

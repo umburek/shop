@@ -5,7 +5,6 @@ module Admin
     def index
       @q = Product.all.order(name: :asc).ransack(params[:q])
       @products_searched = @q.result(distinct: true).paginate(page: params[:page], per_page: 10)
-      @products = Product.all.order(name: :asc).paginate(page: params[:page], per_page: 10)
       @product = Product.new
     end
 
