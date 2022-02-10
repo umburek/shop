@@ -23,6 +23,9 @@
   <% if @current_user.present? %>
     <%= link_to "BUY for #{product.price}$", admin_product_path(product), class: "btn btn-secondary" %>
     <br>
+    <strong>Sales count:</strong>
+    <%=product.sales_count %>
+    <br>
   <% end %>
   <br>
 <% end %>
