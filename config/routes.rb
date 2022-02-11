@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:index]
   resources :products, only: [:index]
+  get '/cart', to: 'purchase_items#index'
+  resources :purchase_items, path: '/cart/items'
 
   namespace :admin do
     root 'admin_panel#index'

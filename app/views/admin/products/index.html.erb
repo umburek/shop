@@ -25,8 +25,7 @@
   <%= product.description %>
   <br>
   <strong>Price:</strong>
-  <%= product.price %>
-  <strong>$</strong>
+  <%= number_to_currency(product.price) %>
   <br>
   <strong>on Stock:</strong>
   <%= product.on_stock %>
