@@ -5,37 +5,29 @@ admin = User.create(
   role: :admin
 )
 
-[
-  ['makaron świderki', 'pasta'],
-  ['filet z kurczaka', 'meat'],
-  ['cebula', 'vegetables'],
-  ['papryka', 'vegetables'],
-  ['pomidor', 'vegetables'],
-  ['przecier pomidorowy', 'other'],
-  ['ząbek czosnku', 'vegetables'],
-  ['mozarella light', 'dairy'],
-  ['olej', 'other'],
-  ['woda', 'other'],
-  ['mąka', 'other'],
-  ['jajka', 'dairy'],
-  ['śmietana', 'dairy'],
-  ['wołowina', 'meat'],
-  ['makaron spaghetti', 'pasta'],
-  ['krewetki królewskie', 'seafood'],
-  ['pomarańcza', 'fruit'],
-  ['czekolada Milka', 'chocolate'],
-  ['kakao Nesquik', 'chocolate'],
-  ['rodzynki', 'delicacies'],
-  ['mak', 'delicacies'],
-  ['borowik', 'mushrooms'],
-  ['kurka', 'mushrooms'],
-  ['jajko na twardo', 'eggs'],
-  ['kasza jaglana', 'groats'],
-  ['kasza kuskus', 'groats'],
-  ['szczypiorek', 'plants'],
-  ['mięta', 'plants'],
-  ['ryż jaśminowy', 'rice'],
-  ['ryż brązowy', 'rice']
-].each do |name, _category|
-  Product.create(name: name)
+PRODUCTS_COUNT = 100
+MAX_CATEGORIES = 3
+
+CATEGORIES = Faker::Base.fetch_all('commerce.department').map do |name|
+  Category.find_or_create_by!(name: name)
+end
+
+PRODUCTS_COUNT.times do
+  name = ''
+
+  loop do
+    name = Faker::Commerce.product_name
+    break unless Product.exists?(name: name)
+  end
+
+  product = Product.new(
+    name: name,
+    price: Faker::Commerce.price,
+    on_stock: rand(100)
+  )
+
+  num_categories = 1 + rand(MAX_CATEGORIES)
+  product.categories = CATEGORIES.sample(num_categories)
+
+  product.save!
 end

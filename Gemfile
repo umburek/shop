@@ -22,6 +22,7 @@ gem 'simple_search_filter'
 gem 'will_paginate', '~> 3.3'
 gem 'will_paginate-bootstrap'
 gem 'archivable'
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
