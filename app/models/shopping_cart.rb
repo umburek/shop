@@ -11,7 +11,7 @@ class ShoppingCart
   end
 
   def items_count
-    order.items.sum(:quantity)
+    purchase.items.sum(:quantity)
   end
 
   def add_item(product_id:, quantity: 1)

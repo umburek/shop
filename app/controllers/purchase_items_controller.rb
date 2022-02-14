@@ -2,6 +2,7 @@ class PurchaseItemsController < ApplicationController
 
   def index
     @items = current_cart.purchase.items
+    @current_user = current_user
   end
 
   def create

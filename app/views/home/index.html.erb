@@ -27,7 +27,7 @@
     <%= form_tag purchase_items_path do %>
       <%= hidden_field_tag :product_id, product.id %>
       <%= number_field_tag :quantity, 1 %>
-      <%= submit_tag "Add to Cart" %>
+      <%= submit_tag "Add to Cart", class: "btn btn-secondary" %>
     <% end %>
   <% end %>
   <br>
