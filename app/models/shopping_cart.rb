@@ -1,11 +1,13 @@
 class ShoppingCart
 
+  delegate :sub_total, to: :purchase
+
   def initialize(token:)
     @token = token
   end
 
   def purchase
-    @purchase ||= Purchase.find_or_create_by(token: @token) do |purchase|
+    @purchase ||= Purchase.find_or_create_by(token: @token, status: 'cart') do |purchase|
       purchase.sub_total = 0
     end
   end
@@ -24,10 +26,23 @@ class ShoppingCart
     purchase_item.price = product.price
     purchase_item.quantity = quantity
 
-    purchase_item.save
+    ActiveRecord::Base.transaction do
+      purchase_item.save
+      update_sub_total!
+    end
   end
 
   def remove_item(id:)
-    purchase.items.destroy(id)
+    ActiveRecord::Base.transaction do
+      purchase.items.destroy(id)
+      update_sub_total!
+    end
+  end
+
+  private
+
+  def update_sub_total!
+    purchase.sub_total = purchase.items.sum('quantity * price')
+    purchase.save
   end
 end

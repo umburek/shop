@@ -4,5 +4,6 @@ class User < ApplicationRecord
   devise :invitable, :database_authenticatable, :registerable, :recoverable, :rememberable,
           :validatable
 
+  has_many :purchases
   enum role: %i[admin registered], _default: :registered
 end
