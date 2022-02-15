@@ -17,7 +17,6 @@ class ApplicationController < ActionController::Base
   end
 
   private
-
   def cart_token
     return @cart_token unless @cart_token.nil?
 
