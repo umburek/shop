@@ -2,12 +2,13 @@ class ShoppingCart
 
   delegate :sub_total, to: :purchase
 
-  def initialize(token:)
+  def initialize(token:, user_id:)
     @token = token
+    @user_id = user_id
   end
 
   def purchase
-    @purchase ||= Purchase.find_or_create_by(token: @token, status: 'cart') do |purchase|
+    @purchase ||= Purchase.find_or_create_by(token: @token, user_id: @user_id, status: 'cart') do |purchase|
       purchase.sub_total = 0
     end
   end

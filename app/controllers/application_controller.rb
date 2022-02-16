@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def current_cart
-    @current_cart ||= ShoppingCart.new(token: cart_token)
+    @current_cart ||= ShoppingCart.new(token: cart_token, user_id: current_user.id)
   end
   helper_method :current_cart
 
