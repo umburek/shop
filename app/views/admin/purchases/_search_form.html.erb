@@ -1,0 +1,9 @@
+<%= search_form_for @q, url: admin_purchases_path do |f| %>
+  <%= f.label "User email:" %>
+  <br>
+  <%= f.search_field :user_email_cont %>
+  <%= f.submit "Search", class:"btn btn-primary" %>
+<% end %>
+<%= link_to "Clear Search", admin_purchases_path, class:"cancel-button" %>
+<br>
+<br>

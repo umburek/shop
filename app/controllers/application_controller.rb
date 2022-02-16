@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!, only: [:edit, :update, :destroy]
-  before_action :current_cart
+  # before_action :current_cart
   include Pundit
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized

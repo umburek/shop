@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:index]
   resources :products, only: [:index]
+  resources :purchases, only: [:index]
   get '/cart', to: 'purchase_items#index'
   resources :purchase_items, path: '/cart/items'
 
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
     resources :users
     resources :categories
     resources :products
+    resources :purchases
   end
 
   root to: 'home#index'
