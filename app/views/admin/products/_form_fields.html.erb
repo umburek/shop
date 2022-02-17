@@ -8,13 +8,10 @@
 <%= f.number_field :on_stock, class: "form-control" %>
 <%= f.file_field :photo, class: "form-control" %>
 
-<ul>
-  <% Category.all.each do |category| %>
-    <dt>
-      <label>
-        <%= check_box_tag "product[category_ids][]", category.id, f.object.categories.include?(category) %>
-        <%= category.name %>
-      </label>
-    </dt>
-  <% end %>
-</ul>
+
+<% Category.all.each do |category| %>
+  <%= check_box_tag "product[category_ids][]", category.id, f.object.categories.include?(category) %>
+  <%= category.name %>
+<% end %>
+<br>
+<br>

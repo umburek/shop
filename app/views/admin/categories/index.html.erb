@@ -11,22 +11,29 @@
 <br>
 <%= render 'admin/categories/search_form' %>
 <br>
-<% @categories_searched.each do |category| %>
-  <strong>Name:</strong>
-  <%= category.name %>
-  <br>
-  <strong>Description:</strong>
-  <%= category.description %>
-  <br>
-  <%= link_to 'Edit', edit_admin_category_path(category), class: "btn btn-secondary" %>
-  <%= link_to 'Delete', admin_category_path(category), class: "btn btn-danger", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-  <br>
-  <br>
-<% end %>
-
 <div class="digg_pagination">
   <div class="page_info">
     <%= page_entries_info @categories_searched %>
   </div>
   <%= will_paginate @categories_searched, :container => false %>
 </div>
+<br>
+<% @categories_searched.each do |category| %>
+  <table class="table  table-stripes table-bordered table-hover">
+    <tr style="background-color: #D6EEEE">
+      <td>
+        <strong>Name:</strong>
+        <%= category.name %>
+      </td>
+      <td align="right">
+        <%= link_to 'Edit', edit_admin_category_path(category), class: "btn btn-secondary" %>
+        <%= link_to 'Delete', admin_category_path(category), class: "btn btn-danger", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <strong>Description:</strong>
+        <%= category.description %>
+      </td>
+    </tr>
+<% end %>

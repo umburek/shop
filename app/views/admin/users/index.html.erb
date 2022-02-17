@@ -1,14 +1,24 @@
 <h2>Users</h2>
 <br>
 <div class="actions">
-  <%= link_to 'Invite User', new_user_invitation_path, class: "btn btn-secondary"  %>
+  <%= link_to 'Invite User', new_user_invitation_path, class: "btn btn-secondary" %>
+  <%= link_to 'Back', admin_admin_panel_index_path, class: "btn btn-secondary" %>
 </div>
-<%  @users.each do |user|%>
-  <strong>email:</strong>
-  <%= user.email %>
-  <strong>| Invitation accepted?</strong>
-  <%= user.invitation_accepted? %>
-  <strong>| Role:</strong>
-  <%= user.role %>
-  <br>
+<br>
+<% @users.each do |user| %>
+  <table class="table  table-stripes table-bordered table-hover">
+    <tr>
+      <td align="left" width="40%">
+        <strong>email:</strong>
+        <%= user.email %>
+      </td>
+      <td align="left" width="30%">
+        <strong>| Invitation accepted?</strong>
+        <%= user.invitation_accepted? %>
+      </td>
+      <td align="left" width="30%">
+        <strong>| Role:</strong>
+        <%= user.role %>
+      </td>
+    </tr>
 <% end %>

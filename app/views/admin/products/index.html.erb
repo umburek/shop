@@ -10,43 +10,53 @@
 <br>
 <%= render 'admin/products/search_form' %>
 
-<% @products_searched.each do |product| %>
-  <% if product.photo.attached? %>
-    <%= image_tag product.photo, width: "200px" %>
-    <br>
-  <% else %>
-    <strong>[Photo not available]</strong>
-    <br>
-  <% end %>
-  <strong>Name:</strong>
-  <%= product.name %>
-  <br>
-  <strong>Description:</strong>
-  <%= product.description %>
-  <br>
-  <strong>Price:</strong>
-  <%= number_to_currency(product.price) %>
-  <br>
-  <strong>on Stock:</strong>
-  <%= product.on_stock %>
-  <br>
-  <strong>Categories:</strong>
-  <%= product.categories.pluck(:name).join(', ') %>
-  <br>
-  <% if product.archived? %>
-    <strong>Archived at:</strong>
-    <%= product.updated_at %>
-    <br>
-  <% end %>
-  <%= link_to 'Edit', edit_admin_product_path(product), class: "btn btn-secondary" %>
-  <%= link_to 'Delete', admin_product_path(product), class: "btn btn-danger", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-  <br>
-  <br>
-<% end %>
-
 <div class="digg_pagination">
   <div class="page_info">
     <%= page_entries_info @products_searched %>
   </div>
   <%= will_paginate @products_searched, :container => false %>
 </div>
+<br>
+<% @products_searched.each do |product| %>
+  <table class="table  table-stripes table-bordered table-hover">
+    <tr>
+      <td align="left" width="20%">
+        <% if product.photo.attached? %>
+          <%= image_tag product.photo, width: "200px" %>
+          <br>
+        <% else %>
+          <strong>[Photo not available]</strong>
+          <br>
+        <% end %>
+      </td>
+      <td align="left" width="50%">
+        <strong>Name:</strong>
+        <%= product.name %>
+        <br>
+        <strong>Description:</strong>
+        <%= product.description %>
+        <br>
+      </td>
+      <td align="left" width="30%">
+        <strong>Price:</strong>
+        <%= number_to_currency(product.price) %>
+        <br>
+        <strong>on Stock:</strong>
+        <%= product.on_stock %>
+        <br>
+        <strong>Categories:</strong>
+        <%= product.categories.pluck(:name).join(', ') %>
+        <br>
+        <% if product.archived? %>
+          <strong>Archived at:</strong>
+          <%= product.updated_at %>
+          <br>
+        <% end %>
+      </td>
+      </td>
+      <%= link_to 'Edit', edit_admin_product_path(product), class: "btn btn-secondary" %>
+      <%= link_to 'Delete', admin_product_path(product), class: "btn btn-danger", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+      </td>
+    </tr>
+  </table>
+<% end %>
