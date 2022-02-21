@@ -1,5 +1,11 @@
 <h2>Purchases</h2>
 
+<p>
+  Download:
+  <%= link_to "CSV", admin_purchases_path(format: "csv") %>
+  <%= link_to "XLS", admin_purchases_path(format: "xls") %>
+</p>
+
 <%= render 'admin/purchases/search_form' %>
 
 <%= link_to 'Back', admin_admin_panel_index_path, class: "btn btn-secondary" %>

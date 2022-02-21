@@ -1,0 +1,22 @@
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Sub Total</th>
+    <th>Created at</th>
+    <th>Updated at</th>
+    <th>Token</th>
+    <th>Status</th>
+    <th>User ID</th>
+  </tr>
+  <% @purchases.each do |purchase| %>
+    <tr>
+      <th><%= purchase.id %></th>
+      <th><%= purchase.sub_total %></th>
+      <th><%= purchase.created_at %></th>
+      <th><%= purchase.updated_at %></th>
+      <th><%= purchase.token %></th>
+      <th><%= purchase.status %></th>
+      <th><%= purchase.user_id %></th>
+    </tr>
+  <% end %>
+</table>
