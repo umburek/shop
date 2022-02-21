@@ -6,6 +6,18 @@ module Admin
       @q = Product.all.order(name: :asc).ransack(params[:q])
       @products_searched = @q.result(distinct: true).paginate(page: params[:page], per_page: 10)
       @product = Product.new
+      @products = @q.result(distinct: true)
+
+      respond_to do |format|
+        format.html
+        format.csv { send_data @products.to_csv, filename: "products_#{Date.today}.csv" }
+        format.xls
+      end
+    end
+
+    def import
+      Product.import(params[:file])
+      redirect_to admin_products_path, notice: "Products imported"
     end
 
     def show

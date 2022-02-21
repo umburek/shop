@@ -15,7 +15,9 @@ Rails.application.routes.draw do
     resources :admin_panel
     resources :users
     resources :categories
-    resources :products
+    resources :products do
+      collection { post :import }
+    end
     resources :purchases
   end
 

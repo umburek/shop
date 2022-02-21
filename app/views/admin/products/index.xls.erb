@@ -1,0 +1,26 @@
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Archived</th>
+    <th>On stock</th>
+    <th>Created at</th>
+    <th>Updated_at</th>
+    <th>UUID</th>
+    <th>Price</th>
+  </tr>
+  <% @products.each do |purchase| %>
+    <tr>
+      <th><%= purchase.id %></th>
+      <th><%= purchase.name %></th>
+      <th><%= purchase.description %></th>
+      <th><%= purchase.archived %></th>
+      <th><%= purchase.on_stock %></th>
+      <th><%= purchase.created_at %></th>
+      <th><%= purchase.updated_at %></th>
+      <th><%= purchase.uuid %></th>
+      <th><%= purchase.price %></th>
+    </tr>
+  <% end %>
+</table>
