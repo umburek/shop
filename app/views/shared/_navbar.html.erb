@@ -18,7 +18,10 @@
     <ul class="navbar-nav ml-auto">
       <% if user_signed_in? %>
         <li class="nav-item">
-          <a class="navbar-brand"><%= @current_user.email %></a>
+          <%= link_to @current_user.email, edit_user_registration_path, method: :get, class: 'navbar-brand' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Purchases', purchases_path, method: :get, class: 'nav-link' %>
         </li>
         <li class="nav-item">
           <%= link_to 'Sign Out', destroy_user_session_path, method: :get, class: 'nav-link' %>
