@@ -1,0 +1,31 @@
+<h2>Purchases</h2>
+
+<%= link_to 'Back', root_path, class: "btn btn-secondary" %>
+<br>
+<br>
+<div class="digg_pagination">
+  <div class="page_info">
+    <%= page_entries_info @purchases %>
+  </div>
+  <%= will_paginate @purchases, :container => false %>
+</div>
+<% @purchases.each do |purchase| %>
+  <table class="table  table-stripes table-bordered table-hover">
+    <tr style="background-color: #D6EEEE">
+      <td><strong>User email: </strong><%= purchase.user.email %></td>
+      <td><strong>Purchase token: </strong><%= purchase.token %></td>
+      <td><strong>Created at: </strong><%= purchase.created_at %></td>
+      <td><strong>Order value: </strong><%= number_to_currency(purchase.sub_total) %></td>
+    </tr>
+    <tr>
+      <td colspan="4"><strong>Ordered items:</strong></td>
+    </tr>
+    <% purchase.items.each do |purchase_item| %>
+      <tr>
+        <td colspan="2"><strong>Name: </strong><%= purchase_item.product.name %></td>
+        <td><strong>Quantity: </strong><%= purchase_item.quantity %></td>
+        <td><strong>Items price: </strong><%= number_to_currency(purchase_item.price) %></td>
+      </tr>
+    <% end %>
+    <br>
+<% end %>

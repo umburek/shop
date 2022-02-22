@@ -1,5 +1,9 @@
 class PurchasesController < ApplicationController
 
+  def index
+    @purchases = current_user.purchases.where(status: :open).order(created_at: :desc).paginate(page: params[:page], per_page: 5)
+  end
+
   def new
     @purchase = current_cart.purchase
     @items = current_cart.purchase.items
