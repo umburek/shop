@@ -21,5 +21,10 @@ Rails.application.routes.draw do
     resources :purchases
   end
 
+  namespace :api do
+    root 'products#index'
+    resources :products
+  end
+
   root to: 'home#index'
 end
