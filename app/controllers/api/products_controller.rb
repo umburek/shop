@@ -1,20 +1,10 @@
 module Api
-  class BaseController < ApplicationController
+  class ProductsController < ApplicationController
     before_action :set_product, only: %i[ show edit update destroy ]
 
     def index
-      @q = Product.all.order(name: :asc).ransack(params[:q])
-      @products_searched = @q.result(distinct: true).paginate(page: params[:page], per_page: 10)
-      @product = Product.new
-      @products = @q.result(distinct: true)
-
-      respond_to do |format|
-        format.html
-        format.csv { send_data @products.to_csv, filename: "products_#{Date.today}.csv" }
-        format.xls
-
-        render json: @products
-      end
+      @products = Product.all.order(name: :asc, id: :asc)
+      render json: @products
     end
 
     def import
