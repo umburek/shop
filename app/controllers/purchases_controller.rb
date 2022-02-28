@@ -6,7 +6,7 @@ class PurchasesController < ApplicationController
 
   def new
     @purchase = current_cart.purchase
-    @items = current_cart.purchase.items
+    @items = current_cart.purchase.items.where.not(quantity: 0)
     @current_user = current_user
   end
 

@@ -20,21 +20,26 @@ class ShoppingCart
   def add_item(product_id:, quantity: 1)
     product = Product.find(product_id)
 
-    purchase_item = purchase.items.find_or_initialize_by(
-      product_id: product_id
-    )
-
+    purchase_item = purchase.items.find_or_initialize_by(product_id: product_id)
     purchase_item.price = product.price
     purchase_item.quantity = quantity
 
     ActiveRecord::Base.transaction do
+      product.on_stock = product.on_stock - purchase_item.quantity
+      product.save
       purchase_item.save
       update_sub_total!
     end
   end
 
   def remove_item(id:)
+    product = Product.find(id)
+    purchase_item = purchase.items.find(product_id: id)
+
     ActiveRecord::Base.transaction do
+      product.on_stock = product.on_stock + purchase_item.quantity
+      product.save
+
       purchase.items.destroy(id)
       update_sub_total!
     end

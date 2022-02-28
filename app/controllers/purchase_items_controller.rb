@@ -1,7 +1,7 @@
 class PurchaseItemsController < ApplicationController
 
   def index
-    @items = current_cart.purchase.items
+    @items = current_cart.purchase.items.where.not(quantity: 0)
     @current_user = current_user
   end
 
@@ -10,6 +10,7 @@ class PurchaseItemsController < ApplicationController
       product_id: params[:product_id],
       quantity: params[:quantity],
     )
+
     redirect_to cart_path
   end
 
