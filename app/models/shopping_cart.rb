@@ -25,20 +25,18 @@ class ShoppingCart
     purchase_item.quantity = quantity
 
     ActiveRecord::Base.transaction do
-      product.on_stock = product.on_stock - purchase_item.quantity
-      product.save
+      product.update(on_stock: product.on_stock - purchase_item.quantity)
       purchase_item.save
       update_sub_total!
     end
   end
 
   def remove_item(id:)
-    product = Product.find(id)
-    purchase_item = purchase.items.find(product_id: id)
+    purchase_item = purchase.items.find(id)
+    product = purchase_item.product
 
     ActiveRecord::Base.transaction do
-      product.on_stock = product.on_stock + purchase_item.quantity
-      product.save
+      product.update(on_stock: product.on_stock + purchase_item.quantity)
 
       purchase.items.destroy(id)
       update_sub_total!
