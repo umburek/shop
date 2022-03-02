@@ -1,0 +1,12 @@
+<%= search_form_for @q, url: admin_statistics_path do |f| %>
+  <%= f.label "Take range from:" %>
+  <%= f.text_field :created_at_gteq, class: 'form-control', Placeholder: 'YYYY-MM-DD' %>
+  <%= f.label "To:" %>
+  <%= f.text_field :created_at_lteq, class: 'form-control', Placeholder: 'YYYY-MM-DD' %>
+
+  <br>
+  <%= f.submit "Search", class: "btn btn-primary" %>
+<% end %>
+<%= link_to "Clear Search", admin_statistics_path, class: "cancel-button" %>
+<br>
+<br>

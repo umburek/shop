@@ -23,7 +23,10 @@ gem 'will_paginate', '~> 3.3'
 gem 'will_paginate-bootstrap'
 gem 'archivable'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+gem 'simple-form-datepicker'
 
+gem 'jquery-rails'
+gem 'bootstrap-datepicker-rails'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"

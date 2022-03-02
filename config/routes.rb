@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :admin_panel
     resources :users
     resources :categories
+    get '/statistics', to: 'statistics#index'
     resources :products do
       collection { post :import }
     end
