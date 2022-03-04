@@ -1,8 +1,8 @@
 <%= search_form_for @q, url: admin_statistics_path do |f| %>
   <%= f.label "Take range from:" %><br>
-  <%= f.date_select :created_at_gteq, class: 'form-control', Placeholder: 'YYYY-MM-DD' %><br>
+  <%= f.date_select :updated_at_gteq %><br>
   <%= f.label "To:" %><br>
-  <%= f.date_select :created_at_lteq, class: 'form-control', Placeholder: 'YYYY-MM-DD' %><br>
+  <%= f.date_select :updated_at_lteq %><br>
   <br>
   <%= f.submit "Search", class: "btn btn-primary" %>
 <% end %>

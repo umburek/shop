@@ -5,6 +5,23 @@
 <%= link_to 'Back', admin_admin_panel_index_path, class: "btn btn-secondary" %>
 <br>
 <br>
+<strong>Total orders: </strong><%= @purchases_searched.count %>
+<br>
+<strong>Orders value: </strong><%= number_to_currency(@purchases_searched.sum(&:sub_total)) %>
+<br>
+<strong>Total items ordered: </strong><%= @items_searched.sum(&:quantity) %>
+<br>
+<strong>Ordering Users: </strong><%= @purchases_searched.map(&:user_id).uniq.count %>
+<br>
+<strong>Most ordered items: </strong><%= @items_searched.map(&:product_id).uniq.count %>
+<br>
+<br>
+<% @items_searched.map(&:product_id).uniq.each do |item_uniq| %>
+  <li>
+      <strong>- </strong><%= Product.find(item_uniq).name %>
+  </li>
+<% end %>
+<br>
 <div class="digg_pagination">
   <div class="page_info">
     <%= page_entries_info @purchases_searched %>
@@ -16,7 +33,7 @@
     <tr style="background-color: #D6EEEE">
       <td><strong>User email: </strong><%= purchase.user.email %></td>
       <td><strong>Purchase token: </strong><%= purchase.token %></td>
-      <td><strong>Created at: </strong><%= purchase.created_at %></td>
+      <td><strong>Updated at: </strong><%= purchase.updated_at %></td>
       <td><strong>Order value: </strong><%= number_to_currency(purchase.sub_total) %></td>
     </tr>
     <tr>
