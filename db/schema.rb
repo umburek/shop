@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_14_115006) do
+ActiveRecord::Schema.define(version: 2022_03_09_094409) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 2022_02_14_115006) do
     t.string "token"
     t.string "status", default: "cart"
     t.bigint "user_id"
+    t.string "aasm_state"
     t.index ["user_id"], name: "index_purchases_on_user_id"
   end
 
