@@ -359,7 +359,7 @@ DEPENDENCIES
   debug
   devise
   devise_invitable (~> 2.0.0)
-  draper
+  draper (~> 4.0, >= 4.0.2)
   faker!
   importmap-rails
   jbuilder (~> 2.7)

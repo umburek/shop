@@ -2,7 +2,7 @@ module Admin
 
   class UsersController < BaseController
     def index
-      @users = User.all
+      @users = User.all.decorate
       @user = User.new
     end
 

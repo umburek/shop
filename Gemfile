@@ -25,7 +25,7 @@ gem 'archivable'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'simple-form-datepicker'
 gem 'aasm', '~> 5.2'
-gem 'draper'
+gem 'draper', '~> 4.0', '>= 4.0.2'
 
 gem 'jquery-rails'
 gem 'bootstrap-datepicker-rails'
