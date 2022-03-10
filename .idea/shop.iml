@@ -539,6 +539,7 @@
             <subtasks>
               <RakeTaskImpl description="Runs all tests, including system tests" fullCommand="test:all" id="all" />
               <RakeTaskImpl description="Run tests quickly, but also reset db" fullCommand="test:db" id="db" />
+              <RakeTaskImpl description="Run tests for {:decorators=&gt;&quot;test:prepare&quot;}" fullCommand="test:decorators" id="decorators" />
               <RakeTaskImpl description="Run system tests only" fullCommand="test:system" id="system" />
               <RakeTaskImpl description="" fullCommand="test:channels" id="channels" />
               <RakeTaskImpl description="" fullCommand="test:controllers" id="controllers" />
