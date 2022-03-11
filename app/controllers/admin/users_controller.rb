@@ -1,8 +1,10 @@
 module Admin
 
   class UsersController < BaseController
+    decorates_assigned :user, :users
+
     def index
-      @users = User.all.decorate
+      @users = User.all.paginate(page: params[:page])
       @user = User.new
     end
 

@@ -1,24 +1,29 @@
 <h2>Users</h2>
-<br>
 <div class="actions">
   <%= link_to 'Invite User', new_user_invitation_path, class: "btn btn-secondary" %>
   <%= link_to 'Back', admin_admin_panel_index_path, class: "btn btn-secondary" %>
 </div>
 <br>
-<% @users.each do |user| %>
+<div class="digg_pagination">
+  <div class="page_info">
+    <%= page_entries_info users %>
+  </div>
+  <%= will_paginate users, :container => false %>
+</div>
+<br>
+<% users.each do |user| %>
   <table class="table  table-stripes table-bordered table-hover">
     <tr>
       <td align="left" width="40%">
-        <strong>User:</strong>
-        <%= user.email %>
+        <%= user.full_name %>
       </td>
       <td align="left" width="30%">
-        <strong>| Invitation accepted?</strong>
-        <%= user.invitation_accepted? %>
+        <strong>Invitation accepted?</strong>
+        <%= user.accepted %>
       </td>
       <td align="left" width="30%">
-        <strong>| Role:</strong>
-        <%= user.role %>
+        <strong>Role:</strong>
+        <%= user.admin_badge %> <%= user.user_badge %>
       </td>
     </tr>
 <% end %>
